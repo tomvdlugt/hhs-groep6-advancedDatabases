@@ -5,6 +5,7 @@ import numpy as np
 import keras_preprocessing
 from keras_preprocessing import image
 from keras_preprocessing.image import ImageDataGenerator
+from keras.models import Model
 
 import keras as keras
 import tensorflow as tf
@@ -101,6 +102,52 @@ model.add(Dense(128, activation='relu'))
 
 model.add(Dense(num_class_train, activation='softmax'))
 
-model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+# model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+
+# model.summary()
+
+model_layers = [layer.name for layer in model.layers]
+print('layer name : ', model_layers)
+
+img_path = '/Users/tom/Documents/Documents/Projects/HHS/Semester 5/portfolio 3/hhs-groep6-advancedDatabases/MachineLearningModel/input/new_plant_diseases_dataset/train/Potato___Early_blight/0a8a68ee-f587-4dea-beec-79d02e7d3fa4___RS_Early.B 8461.JPG'
+img1 = image.load_img(img_path)
+plt.imshow(img1);
+#preprocess image
+img1 = image.load_img(img_path, target_size=(256, 256))
+img = image.img_to_array(img1)
+img = img/255
+img = np.expand_dims(img, axis=0)
 
 model.summary()
+dummy_input = np.random.random((1, img_width, img_height, 3))
+
+# Perform a forward pass to build the model
+model.predict(dummy_input)
+
+conv2d_0_output=Model(inputs=model.input,outputs=model.get_layer('conv2d').output)
+
+max_pooling2d_0_output=Model(inputs=model.input,outputs=model.get_layer('max_pooling2d').output)
+
+conv2d_1_output = Model(inputs=model.input, outputs=model.get_layer('conv2d_2').output)
+
+max_pooling2d_1_output = Model(inputs=model.input,outputs=model.get_layer('max_pooling2d_1').output)
+
+conv2d_2_output=Model(inputs=model.input,outputs=model.get_layer('conv2d_2').output)
+
+max_pooling2d_2_output=Model(inputs=model.input,outputs=model.get_layer('max_pooling2d_2').output)
+
+flatten_1_output=Model(inputs=model.input,outputs=model.get_layer('flatten').output)
+
+conv2d_0_features = conv2d_0_output.predict(img)
+
+max_pooling2d_0_features = max_pooling2d_0_output.predict(img)
+
+conv2d_1_features = conv2d_1_output.predict(img)
+
+max_pooling2d_1_features = max_pooling2d_1_output.predict(img)
+
+conv2d_2_features = conv2d_2_output.predict(img)
+
+max_pooling2d_2_features = max_pooling2d_2_output.predict(img)
+
+flatten_1_features = flatten_1_output.predict(img)
