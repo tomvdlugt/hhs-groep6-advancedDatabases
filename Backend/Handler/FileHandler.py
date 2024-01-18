@@ -1,20 +1,18 @@
 class FileHandler:
+    from Config.config import rootDirectory_path
+    import platform;
+    operatingSystem = platform.system();
+    
     @classmethod
     def CheckDirectoryIntegrity(cls):
-        import os;
-        import platform;
-
         # This class is meant to publicly build the used paths for the code.
         # Think of it as global variables, but one that allows the project to be launched
         # from any chosen directory.
         # This should be essential to the functions of the program.
-
-        projectRoot = str(os.getcwd());
-        operatingSystem = platform.system();
-        print("operatingSystem: " + operatingSystem);
-        print("project root given: " + projectRoot);
+        print("operatingSystem: " + cls.operatingSystem);
+        print("project root given: " + cls.rootDirectory_path);
         
-        mainImagesPath = cls.ParseDirectoryPath(projectRoot + "\\Images");
+        mainImagesPath = cls.ParseDirectoryPath(cls.rootDirectory_path + "\\Images");
         rawImagesPath = cls.ParseDirectoryPath(mainImagesPath + "\\Incoming");
         processedImagesPath = cls.ParseDirectoryPath(mainImagesPath + "\\Processed");
         trainedImagesPath = cls.ParseDirectoryPath(mainImagesPath + "\\Trained");
@@ -34,13 +32,8 @@ class FileHandler:
 
     @classmethod
     def ParseDirectoryPath(cls, givenPath):
-        import os;
-        import platform;
-        projectRoot = str(os.getcwd());
-        operatingSystem = platform.system();
-
         # return the givenPath with the correct directory divider
-        match operatingSystem:
+        match cls.operatingSystem:
             case "Windows":
                 return givenPath.replace("/", "\\");
             case "Mac":
@@ -53,7 +46,6 @@ class FileHandler:
         
     def CreateFolder(path, folderName):
         import os;
-        import platform;
         if(os.path.exists(path)):
             print(f"Folder {folderName} exists, stopping any further actions.");
         else:
@@ -63,10 +55,7 @@ class FileHandler:
     
     @classmethod
     def PlaceIncoming(cls):
-        import os;
-        import platform;
         import uuid;
-
         print(uuid.uuid4());
 
     @classmethod
@@ -74,32 +63,20 @@ class FileHandler:
         #TODO
         # Instead of receiving images from the root folder, get them from incoming
         import os; 
-        import shutil;
-        projectRoot = str(os.getcwd());
-        currentFilePath = cls.ParseDirectoryPath(projectRoot + "\\Images\\Incoming\\" + fileName);
+        currentFilePath = cls.ParseDirectoryPath(cls.rootDirectory_path + "\\Images\\Incoming\\" + fileName);
         fileName = cls.GenerateUid() + fileName[fileName.find("."):];
-        desiredFilePath = cls.ParseDirectoryPath(projectRoot + "\\Images\\Processed\\" + fileName);
+        desiredFilePath = cls.ParseDirectoryPath(cls.rootDirectory_path + "\\Images\\Processed\\" + fileName);
 
         # Rename and place the file in the desired path.
         os.rename(currentFilePath, desiredFilePath)
 
     @classmethod
     def GenerateUid(cls):
-        import os;
-        import platform;
         import uuid;
 
         generatedUid = uuid.uuid4();
         print(generatedUid);
         return str(generatedUid);
-    
-    @classmethod
-    def MoveFile(cls):
-        import os;
-        import platform;
-        import uuid;
-
-        print(uuid.uuid4());
 
             
 
