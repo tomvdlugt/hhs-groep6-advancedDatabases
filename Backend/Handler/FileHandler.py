@@ -1,8 +1,3 @@
-from fileinput import filename
-from msilib.schema import File
-from os import replace
-
-
 class FileHandler:
     @classmethod
     def CheckDirectoryIntegrity(cls):
@@ -49,6 +44,8 @@ class FileHandler:
             case "Windows":
                 return givenPath.replace("/", "\\");
             case "Mac":
+                return givenPath.replace("\\", "/"); 
+            case "Darwin":
                 return givenPath.replace("\\", "/");
             case _:
                 print("operatingSystem: unknown, hopping the default path is good.\n\tDetected operating system: " + operatingSystem);
