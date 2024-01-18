@@ -85,7 +85,7 @@ class plantDiseaseRecogniseModel:
             class_mode = 'sparse',
         )
     
-    def train(self, epochs = 5, batch_size = 32):
+    def train(self, epochs, batch_size):
         total_train_images = self.train_data.samples
         steps_per_epoch = np.ceil(total_train_images / batch_size).astype(int)
         validation_steps = np.ceil(self.valid_data.samples / batch_size).astype(int)
@@ -111,7 +111,8 @@ class plantDiseaseRecogniseModel:
         return loss, accuracy
 
     def save(self, folderPath, filename):
-        self.model.save(folderPath + filename + now())
+        save_url = folderPath + filename + now() + ".h5"
+        self.model.save(filepath=save_url)
 
     def plot_metrics(self, history):
         acc = history.history['accuracy']

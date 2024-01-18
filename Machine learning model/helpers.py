@@ -1,8 +1,7 @@
 import datetime
 
-
 def now():
-    now = datetime.now()
-    formatted_date = now.strftime("%D%M%Y_%H%M%S")  # Format: DDMMYYYY_HHMMSS
+    current_time = datetime.datetime.now()  # Get the current date and time
+    formatted_date = current_time.strftime("%d%m%Y_%H%M%S")  # Format: DDMMYYYY_HHMMSS
 
     return formatted_date

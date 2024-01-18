@@ -7,12 +7,12 @@ if __name__ == "__main__":
     print(f"Test path: {test_path}")
     
     # Train the model
-    history = model.train(epochs = 5, batch_size = 30)
+    history = model.train(epochs = epochs, batch_size = batch_size)
 
     model.evaluate()
 
     # saves file 
-    model.save('plantDiseaseRecognitionModel.h5')
+    model.save(folderPath=trained_models, filename='plantDiseaseRecognitionModel')
     
     # draws diagram of the training result
     model.plot_metrics(history)
