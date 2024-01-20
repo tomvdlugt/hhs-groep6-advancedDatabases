@@ -1,5 +1,6 @@
 """
 Connects to a SQL database using pyodbc
+Make sure ODBC 18 is installed
 """ 
 import pyodbc
 
