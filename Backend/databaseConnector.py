@@ -26,3 +26,22 @@ class DatabaseConnector:
         if self.conn:
             self.conn.close()
             print("Connection closed")
+    
+    def executeQuery(self, query, params=None):
+        """ Execute a query """
+        if not self.conn:
+            print("Not connected to the db")
+            return;
+
+        with self.conn.cursor() as cursor:
+            try:
+                if params:
+                    cursor.execute(query, params)
+                else:
+                    cursor.execute(query)
+                self.conn.commit()
+                print("Query executed succesfully")
+            except Exception as e:
+                print(f"Error executing the query: {e}")
+                self.conn.rollback()
+        
