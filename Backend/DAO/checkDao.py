@@ -1,10 +1,11 @@
-from databaseConnector import DatabaseConnector
-from checksModel import ChecksModel
+from Backend.databaseConnector import DatabaseConnector
+from Backend.Models.checksModel import ChecksModel
 
 class ChecksDao:
-    def __init__(self):
-        self.db = DatabaseConnector
+    def __init__(self, db_connector):
+        self.db = db_connector
     
     def addCheck(self, checksModel:ChecksModel):
-        query = f"INSERT INTO users (name, email) VALUES ({checksModel.momentOfCheck}, {checksModel.healthy})"
-        self.db.executeQuery(query)
+        query = "INSERT INTO dbo.checks (moment_of_check, healthy) VALUES (?, ?)"
+        params = (checksModel.momentOfCheck, checksModel.healthy)
+        self.db.executeQuery(query, params)
