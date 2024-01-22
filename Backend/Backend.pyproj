@@ -11,6 +11,7 @@
     <OutputPath>.</OutputPath>
     <Name>Backend</Name>
     <RootNamespace>Backend</RootNamespace>
+    <InterpreterId>MSBuild|pythonmain|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -7218,6 +7219,17 @@
     <Content Include="Tests\TestsRens\PythonTests\__pycache__\FileHandlerEnums.cpython-311.pyc" />
     <Content Include="__pycache__\databaseConnector.cpython-311.pyc" />
     <Content Include="__pycache__\__init__.cpython-311.pyc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="..\pythonmain\">
+      <Id>pythonmain</Id>
+      <Version>3.11</Version>
+      <Description>pythonmain (Python 3.11 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
