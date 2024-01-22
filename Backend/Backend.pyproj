@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>c45f9dfa-adb5-45a9-ab18-668a47ef973d</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Backend.py</StartupFile>
+    <StartupFile>main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,9 +21,17 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Backend.py" />
+    <Compile Include="DAO\checkDao.py" />
+    <Compile Include="DAO\__init__.py" />
+    <Compile Include="databaseConnector.py" />
+    <Compile Include="databaseConnector_example.py" />
+    <Compile Include="endpoints\SaveHistoricData.py" />
     <Compile Include="Handler\FileHandler.py" />
     <Compile Include="MachineLearningModel\main.py" />
+    <Compile Include="main.py" />
+    <Compile Include="Models\checksModel.py" />
+    <Compile Include="Models\__init__.py" />
+    <Compile Include="Tests\databaseCallTest.py" />
     <Compile Include="Tests\TestsRens\AI_Test_Groep6.py" />
     <Compile Include="Tests\TestsRens\class1.py" />
     <Compile Include="Tests\TestsRens\PythonTests\FileHandler.py" />
@@ -31,8 +39,13 @@
     <Compile Include="Tests\TestsRens\PythonTests\ImportVersionPrinter.py" />
     <Compile Include="Tests\TestsRens\PythonTests\tutorial.py" />
     <Compile Include="Tests\TestsRens\PythonTests\WindowsFileHandler.py" />
+    <Compile Include="Tests\TestsTom\__init__.py" />
+    <Compile Include="__init__.py" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="DAO\" />
+    <Folder Include="DAO\__pycache__\" />
+    <Folder Include="endpoints\" />
     <Folder Include="Handler\" />
     <Folder Include="Handler\__pycache__\" />
     <Folder Include="Images\" />
@@ -52,12 +65,18 @@
     <Folder Include="MachineLearningModel\input\new_plant_diseases_dataset\valid\Potato___healthy\" />
     <Folder Include="MachineLearningModel\input\new_plant_diseases_dataset\valid\Potato___Late_blight\" />
     <Folder Include="Manager\" />
+    <Folder Include="Models\" />
+    <Folder Include="Models\__pycache__\" />
     <Folder Include="Tests\" />
     <Folder Include="Tests\TestsRens\" />
     <Folder Include="Tests\TestsRens\PythonTests\" />
     <Folder Include="Tests\TestsRens\PythonTests\__pycache__\" />
+    <Folder Include="Tests\TestsTom\" />
+    <Folder Include="__pycache__\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DAO\__pycache__\checkDao.cpython-311.pyc" />
+    <Content Include="DAO\__pycache__\__init__.cpython-311.pyc" />
     <Content Include="Handler\__pycache__\FileHandler.cpython-311.pyc" />
     <Content Include="MachineLearningModel\input\new_plant_diseases_dataset\test\PotatoEarlyBlight1.JPG" />
     <Content Include="MachineLearningModel\input\new_plant_diseases_dataset\test\PotatoEarlyBlight2.JPG" />
@@ -7192,9 +7211,13 @@
     <Content Include="MachineLearningModel\input\new_plant_diseases_dataset\valid\Potato___Late_blight\fe93615b-4160-4956-a65c-cdbc79af2052___RS_LB 5131.JPG" />
     <Content Include="MachineLearningModel\input\new_plant_diseases_dataset\valid\Potato___Late_blight\feefc118-4434-4ffb-afbb-02fb292f72b6___RS_LB 2874.JPG" />
     <Content Include="MachineLearningModel\input\new_plant_diseases_dataset\valid\Potato___Late_blight\ff7160f9-f8d7-4576-82b8-009bf1b63b3b___RS_LB 4974_flipTB.JPG" />
+    <Content Include="Models\__pycache__\checksModel.cpython-311.pyc" />
+    <Content Include="Models\__pycache__\__init__.cpython-311.pyc" />
     <Content Include="Tests\TestsRens\PythonTests\__pycache__\FileHandler.cpython-311.pyc" />
     <Content Include="Tests\TestsRens\PythonTests\__pycache__\FileHandler2.cpython-311.pyc" />
     <Content Include="Tests\TestsRens\PythonTests\__pycache__\FileHandlerEnums.cpython-311.pyc" />
+    <Content Include="__pycache__\databaseConnector.cpython-311.pyc" />
+    <Content Include="__pycache__\__init__.cpython-311.pyc" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
