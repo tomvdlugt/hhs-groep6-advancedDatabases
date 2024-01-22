@@ -1,6 +1,6 @@
-from Backend.databaseConnector import DatabaseConnector
-from Backend.Models.checksModel import ChecksModel
-from Backend.DAO.checkDao import ChecksDao
+from databaseConnector import DatabaseConnector
+from Models.checksModel import ChecksModel
+from DAO.checkDao import ChecksDao
 
 db = DatabaseConnector()
 db.connect()
