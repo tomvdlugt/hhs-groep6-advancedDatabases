@@ -6,3 +6,5 @@
 *.pyc
 *.pyo
 /pythonmain
+__pycache__
+pythonmain
