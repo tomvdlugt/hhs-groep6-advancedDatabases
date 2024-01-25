@@ -1,5 +1,5 @@
-from Backend.databaseConnector import DatabaseConnector
-from Backend.Models.checksModel import ChecksModel
+from databaseConnector import DatabaseConnector
+from Models.checksModel import ChecksModel
 
 class ChecksDao:
     def __init__(self, db_connector):

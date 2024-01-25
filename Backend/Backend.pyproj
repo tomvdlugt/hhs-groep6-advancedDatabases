@@ -11,6 +11,7 @@
     <OutputPath>.</OutputPath>
     <Name>Backend</Name>
     <RootNamespace>Backend</RootNamespace>
+    <InterpreterId>MSBuild|pythonmain|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -26,10 +27,18 @@
     <Compile Include="databaseConnector.py" />
     <Compile Include="databaseConnector_example.py" />
     <Compile Include="endpoints\SaveHistoricData.py" />
+    <Compile Include="Global\GlobalVariables.py" />
+    <Compile Include="Global\ConfigHandler.py" />
+    <Compile Include="Global\Config.py" />
     <Compile Include="Handler\FileHandler.py" />
+    <Compile Include="InitialiazeModels.py" />
     <Compile Include="MachineLearningModel\main.py" />
     <Compile Include="main.py" />
     <Compile Include="Models\checksModel.py" />
+    <Compile Include="Models\ImageProcessingDirectoriesModel.py" />
+    <Compile Include="Models\MachineLearningDirectoriesModel.py" />
+    <Compile Include="Models\PythonDirectoriesModel.py" />
+    <Compile Include="Models\SystemModel.py" />
     <Compile Include="Models\__init__.py" />
     <Compile Include="Tests\databaseCallTest.py" />
     <Compile Include="Tests\TestsRens\AI_Test_Groep6.py" />
@@ -38,7 +47,6 @@
     <Compile Include="Tests\TestsRens\PythonTests\FileHandlerEnums.py" />
     <Compile Include="Tests\TestsRens\PythonTests\ImportVersionPrinter.py" />
     <Compile Include="Tests\TestsRens\PythonTests\tutorial.py" />
-    <Compile Include="Tests\TestsRens\PythonTests\WindowsFileHandler.py" />
     <Compile Include="Tests\TestsTom\__init__.py" />
     <Compile Include="__init__.py" />
   </ItemGroup>
@@ -67,6 +75,7 @@
     <Folder Include="Manager\" />
     <Folder Include="Models\" />
     <Folder Include="Models\__pycache__\" />
+    <Folder Include="Global\" />
     <Folder Include="Tests\" />
     <Folder Include="Tests\TestsRens\" />
     <Folder Include="Tests\TestsRens\PythonTests\" />
@@ -7218,6 +7227,17 @@
     <Content Include="Tests\TestsRens\PythonTests\__pycache__\FileHandlerEnums.cpython-311.pyc" />
     <Content Include="__pycache__\databaseConnector.cpython-311.pyc" />
     <Content Include="__pycache__\__init__.cpython-311.pyc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="..\pythonmain\">
+      <Id>pythonmain</Id>
+      <Version>3.11</Version>
+      <Description>pythonmain (Python 3.11 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

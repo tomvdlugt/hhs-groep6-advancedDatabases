@@ -1,3 +1,31 @@
+#import Models.SystemModel
+import InitialiazeModels
+from Models import ImageProcessingDirectoriesModel
+
+systemModel = InitialiazeModels.InitialiazeModels.InitializeOperatingSystem();
+systemModel = InitialiazeModels.InitialiazeModels.InitializeOperatingSystem();
+systemModel = InitialiazeModels.InitialiazeModels.InitializeOperatingSystem();
+
+InitialiazeModels_Class = InitialiazeModels.InitialiazeModels;
+
+systemModel = InitialiazeModels_Class.InitializeOperatingSystem();
+pythonDirectoriesModel = InitialiazeModels_Class.InitializePythonDirectoriesModel();
+machineLearningDirectoriesModel = InitialiazeModels_Class.InitializeMachineLearningDirectoriesModel(pythonDirectoriesModel.projectRoot);
+imageProcessingDirectoriesModel = InitialiazeModels_Class.InitializeImageProcessingDirectoriesModel(pythonDirectoriesModel.projectRoot);
+# directories given
+print("Desired models initialized, locations shown below");
+print("Main directory given: ");
+print(pythonDirectoriesModel.projectRoot);
+print("Machine learning directories given: ");
+for instance in machineLearningDirectoriesModel.allPaths:
+    print(instance);
+
+print("Image processing directories given: ");
+for instance in imageProcessingDirectoriesModel.allPaths:
+    print(instance);
+
+print("Checking folders integrity... ");
+
 
 # This is the main, before the program is going to run, it will check all the variables given.
 
