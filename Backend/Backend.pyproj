@@ -28,6 +28,7 @@
     <Compile Include="databaseConnector_example.py" />
     <Compile Include="endpoints\SaveHistoricData.py" />
     <Compile Include="Handler\FileHandler.py" />
+    <Compile Include="Handler\Resources\Global.py" />
     <Compile Include="MachineLearningModel\main.py" />
     <Compile Include="main.py" />
     <Compile Include="Models\checksModel.py" />
@@ -39,7 +40,6 @@
     <Compile Include="Tests\TestsRens\PythonTests\FileHandlerEnums.py" />
     <Compile Include="Tests\TestsRens\PythonTests\ImportVersionPrinter.py" />
     <Compile Include="Tests\TestsRens\PythonTests\tutorial.py" />
-    <Compile Include="Tests\TestsRens\PythonTests\WindowsFileHandler.py" />
     <Compile Include="Tests\TestsTom\__init__.py" />
     <Compile Include="__init__.py" />
   </ItemGroup>
@@ -48,6 +48,7 @@
     <Folder Include="DAO\__pycache__\" />
     <Folder Include="endpoints\" />
     <Folder Include="Handler\" />
+    <Folder Include="Handler\Resources\" />
     <Folder Include="Handler\__pycache__\" />
     <Folder Include="Images\" />
     <Folder Include="Images\Incoming\" />

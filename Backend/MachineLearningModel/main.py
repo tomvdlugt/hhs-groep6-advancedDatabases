@@ -13,6 +13,7 @@ from keras.models import Sequential
 from keras.layers import Dense,Dropout,Flatten
 from keras.layers import Conv2D,MaxPooling2D,Activation,AveragePooling2D,BatchNormalization
 train_dir = "/Users/tom/Documents/Documents/Projects/HHS/Semester 5/portfolio 3/hhs-groep6-advancedDatabases/MachineLearningModel/input/new_plant_diseases_dataset/train"
+train_dir = root
 test_dir = "/Users/tom/Documents/Documents/Projects/HHS/Semester 5/portfolio 3/hhs-groep6-advancedDatabases/MachineLearningModel/input/new_plant_diseases_dataset/test"
 valid_dir = "/Users/tom/Documents/Documents/Projects/HHS/Semester 5/portfolio 3/hhs-groep6-advancedDatabases/MachineLearningModel/input/new_plant_diseases_dataset/valid"
 

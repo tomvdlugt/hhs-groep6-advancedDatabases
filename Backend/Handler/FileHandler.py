@@ -1,4 +1,6 @@
 class FileHandler:
+    def baseProjectPath = str(os.getcwd());
+
     @classmethod
     def CheckDirectoryIntegrity(cls):
         import os;
