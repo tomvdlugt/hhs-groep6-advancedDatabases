@@ -1,12 +1,15 @@
 #import Models.SystemModel
 import InitialiazeModels
+from Handler.FileHandler import FileHandler as FileHandler_Class;
+InitialiazeModels_Class = InitialiazeModels.InitialiazeModels;
+#FileHandler_Class = FileHandler;
 from Models import ImageProcessingDirectoriesModel
 
 systemModel = InitialiazeModels.InitialiazeModels.InitializeOperatingSystem();
 systemModel = InitialiazeModels.InitialiazeModels.InitializeOperatingSystem();
 systemModel = InitialiazeModels.InitialiazeModels.InitializeOperatingSystem();
 
-InitialiazeModels_Class = InitialiazeModels.InitialiazeModels;
+
 
 systemModel = InitialiazeModels_Class.InitializeOperatingSystem();
 pythonDirectoriesModel = InitialiazeModels_Class.InitializePythonDirectoriesModel();
@@ -25,6 +28,8 @@ for instance in imageProcessingDirectoriesModel.allPaths:
     print(instance);
 
 print("Checking folders integrity... ");
+FileHandler_Class.CheckDirectoryCollectionIntegrity(machineLearningDirectoriesModel.allPaths);
+FileHandler_Class.CheckDirectoryCollectionIntegrity(imageProcessingDirectoriesModel.allPaths);
 
 
 # This is the main, before the program is going to run, it will check all the variables given.

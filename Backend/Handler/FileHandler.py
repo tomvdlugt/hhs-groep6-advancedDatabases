@@ -2,6 +2,12 @@ class FileHandler:
     #from Global.config import GlobalConfig;
     #print(GlobalConfig.projectRoot);
     
+
+    @classmethod
+    def CheckDirectoryCollectionIntegrity(cls, givenCollection):
+        for directory in givenCollection:
+            cls.CreateFolder(directory);
+    
     @classmethod
     def CheckDirectoryIntegrity(cls):
         
@@ -33,10 +39,10 @@ class FileHandler:
         # can be improved with a double string array foreach loop
         # But I am disinclined to do that for now.
         # Start creating folders in the desired directories.
-        cls.CreateFolder(mainImagesPath, "Images");
-        cls.CreateFolder(rawImagesPath, "Incoming");
-        cls.CreateFolder(processedImagesPath, "Processed");
-        cls.CreateFolder(trainedImagesPath, "Trained");
+        cls.CreateFolderWithName(mainImagesPath, "Images");
+        cls.CreateFolderWithName(rawImagesPath, "Incoming");
+        cls.CreateFolderWithName(processedImagesPath, "Processed");
+        cls.CreateFolderWithName(trainedImagesPath, "Trained");
         # End creating folders in the desired directories.
 
         # Import newly available trained files
@@ -62,7 +68,7 @@ class FileHandler:
                 print("operatingSystem: unknown, hopping the default path is good.\n\tDetected operating system: " + operatingSystem);
                 return givenPath;
         
-    def CreateFolder(path, folderName):
+    def CreateFolderWithName(path, folderName):
         import os;
         import platform;
         if(os.path.exists(path)):
@@ -71,6 +77,16 @@ class FileHandler:
              print(f"Folder {folderName} did not exist, creating new folder");
              os.mkdir(path);
              print("Folder created");
+    
+    def CreateFolder(path):
+        import os;
+        import platform;
+        if(os.path.exists(path)):
+            print(f"FolderPath: {path} exists, stopping any further actions.");
+        else:
+            print(f"FolderPath: {path} did not exist, creating new folder");
+            os.mkdir(path);
+            print("Folder created");
     
     @classmethod
     def PlaceIncoming(cls):

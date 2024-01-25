@@ -24,11 +24,11 @@ class InitialiazeModels:
 
     @classmethod
     def InitializeMachineLearningDirectoriesModel(cls, projectRoot):
-        train_directory = FileHandler_Class.ParseDirectoryPath(f"{projectRoot}/input/new_plant_diseases_dataset");
+        train_directory = FileHandler_Class.ParseDirectoryPath(f"{projectRoot}/MachineLearningModel/input/new_plant_diseases_dataset");
         train_path = FileHandler_Class.ParseDirectoryPath(train_directory + "/train");
         valid_path = FileHandler_Class.ParseDirectoryPath(train_directory + "/valid");
-        test_path = FileHandler_Class.ParseDirectoryPath(train_directory + "/test/");
-        trained_models = FileHandler_Class.ParseDirectoryPath(train_directory + "/trained_models/");
+        test_path = FileHandler_Class.ParseDirectoryPath(train_directory + "/test");
+        trained_models = FileHandler_Class.ParseDirectoryPath(train_directory + "/trained_models");
         return Models.MachineLearningDirectoriesModel.MachineLearningDirectoriesModel(train_directory, train_path, valid_path, test_path, trained_models);
 
     @classmethod
