@@ -27,11 +27,18 @@
     <Compile Include="databaseConnector.py" />
     <Compile Include="databaseConnector_example.py" />
     <Compile Include="endpoints\SaveHistoricData.py" />
+    <Compile Include="Global\GlobalVariables.py" />
+    <Compile Include="Global\ConfigHandler.py" />
+    <Compile Include="Global\Config.py" />
     <Compile Include="Handler\FileHandler.py" />
-    <Compile Include="Handler\Resources\Global.py" />
+    <Compile Include="InitialiazeModels.py" />
     <Compile Include="MachineLearningModel\main.py" />
     <Compile Include="main.py" />
     <Compile Include="Models\checksModel.py" />
+    <Compile Include="Models\ImageProcessingDirectoriesModel.py" />
+    <Compile Include="Models\MachineLearningDirectoriesModel.py" />
+    <Compile Include="Models\PythonDirectoriesModel.py" />
+    <Compile Include="Models\SystemModel.py" />
     <Compile Include="Models\__init__.py" />
     <Compile Include="Tests\databaseCallTest.py" />
     <Compile Include="Tests\TestsRens\AI_Test_Groep6.py" />
@@ -48,7 +55,6 @@
     <Folder Include="DAO\__pycache__\" />
     <Folder Include="endpoints\" />
     <Folder Include="Handler\" />
-    <Folder Include="Handler\Resources\" />
     <Folder Include="Handler\__pycache__\" />
     <Folder Include="Images\" />
     <Folder Include="Images\Incoming\" />
@@ -69,6 +75,7 @@
     <Folder Include="Manager\" />
     <Folder Include="Models\" />
     <Folder Include="Models\__pycache__\" />
+    <Folder Include="Global\" />
     <Folder Include="Tests\" />
     <Folder Include="Tests\TestsRens\" />
     <Folder Include="Tests\TestsRens\PythonTests\" />

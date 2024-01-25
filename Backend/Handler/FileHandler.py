@@ -1,8 +1,15 @@
 class FileHandler:
-    def baseProjectPath = str(os.getcwd());
-
+    #from Global.config import GlobalConfig;
+    #print(GlobalConfig.projectRoot);
+    
     @classmethod
     def CheckDirectoryIntegrity(cls):
+        
+
+        from Global.config import projectRoot;
+        from Global.config import GlobalConfig;
+        
+
         import os;
         import platform;
 
@@ -12,6 +19,8 @@ class FileHandler:
         # This should be essential to the functions of the program.
 
         projectRoot = str(os.getcwd());
+        projectRoot = GlobalConfig.base_directory;
+        
         operatingSystem = platform.system();
         print("operatingSystem: " + operatingSystem);
         print("project root given: " + projectRoot);
