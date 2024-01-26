@@ -32,10 +32,11 @@ class DatabaseConnector:
         if not self.conn:
             print("Not connected to the db")
             return;
-
         with self.conn.cursor() as cursor:
             try:
                 cursor.execute(query, params) if params else cursor.execute(query)
+                for row in cursor.fetchall():
+                     print(row);
                 self.conn.commit()
                 print("Query executed successfully")
             except Exception as e:
