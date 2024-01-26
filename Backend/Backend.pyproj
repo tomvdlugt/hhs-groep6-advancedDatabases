@@ -32,11 +32,14 @@
     <Compile Include="Global\Config.py" />
     <Compile Include="Handler\FileHandler.py" />
     <Compile Include="InitialiazeModels.py" />
+    <Compile Include="InitialzeHandlers\ConnectionModels.py" />
     <Compile Include="InitialzeHandlers\MainPart2_TrainTheModel.py" />
+    <Compile Include="InitialzeHandlers\MainPart3_ConnectToDatabase.py" />
     <Compile Include="InitialzeHandlers\MainPart1_Directories.py" />
     <Compile Include="MachineLearningModel\main.py" />
     <Compile Include="main.py" />
     <Compile Include="Models\checksModel.py" />
+    <Compile Include="Models\ImageModels.py" />
     <Compile Include="Models\ImageProcessingDirectoriesModel.py" />
     <Compile Include="Models\MachineLearningDirectoriesModel.py" />
     <Compile Include="Models\PythonDirectoriesModel.py" />
