@@ -8,9 +8,6 @@ from Models import ImageProcessingDirectoriesModel
 systemModel = InitialiazeModels.InitialiazeModels.InitializeOperatingSystem();
 systemModel = InitialiazeModels.InitialiazeModels.InitializeOperatingSystem();
 systemModel = InitialiazeModels.InitialiazeModels.InitializeOperatingSystem();
-
-
-
 systemModel = InitialiazeModels_Class.InitializeOperatingSystem();
 pythonDirectoriesModel = InitialiazeModels_Class.InitializePythonDirectoriesModel();
 machineLearningDirectoriesModel = InitialiazeModels_Class.InitializeMachineLearningDirectoriesModel(pythonDirectoriesModel.projectRoot);
@@ -30,14 +27,6 @@ for instance in imageProcessingDirectoriesModel.allPaths:
 print("Checking folders integrity... ");
 FileHandler_Class.CheckDirectoryCollectionIntegrity(machineLearningDirectoriesModel.allPaths);
 FileHandler_Class.CheckDirectoryCollectionIntegrity(imageProcessingDirectoriesModel.allPaths);
-
-
-# This is the main, before the program is going to run, it will check all the variables given.
-
-# Check where the program is stored, the FileHandler is to be used to determin file positions aswell
-# In short: It will make the folders on startup and assign images properly when given.
-from Handler.FileHandler import FileHandler
-FileHandler.CheckDirectoryIntegrity();
 
 
 # Import necessary libraries

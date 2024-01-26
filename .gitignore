@@ -4,6 +4,11 @@
 /.vs/VSWorkspaceState.json
 /.vs/PlantenHerkenning/v17/.wsuo
 *.pyc
-*.pyo
+*.
 /pythonmain
+*pythonmain
+/pythonmain/Lib/site-packages
+/pythonmain/Lib/site-packages/pip
+/pythonmain/Lib/site-packages/pip/_internal
+/pythonmain/Lib/site-packages/pip/_internal/cli\__pycache__
 __pycache__
