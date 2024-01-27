@@ -9,7 +9,12 @@ Directories.MainPart1_Method();
 from databaseConnector import DatabaseConnector;
 connection = DatabaseConnector(); #trigger the __init__(self)
 connection.connect();
-connection.executeQuery("select * from [dbo].[checks]");
+#connection.executeQuery("select * from [dbo].[checks]");
+#connection.executeQuery("Create TABLE Images( imageId int IDENTITY(1,1) PRIMARY KEY, originalName varchar(255) , uuidName  varchar(255), extension varchar(10), disease  varchar(255), uploadDate  datetime, processedDate  datetime null);");
+#connection.executeQuery("Create TABLE Images( imageId int IDENTITY(1,1) PRIMARY KEY, originalName varchar(255) , uuidName  varchar(255), extension varchar(10), disease  varchar(255), uploadDate  datetime, processedDate  datetime null);");
+insertIntoImages = "INSERT INTO Images (originalName, uuidName, extension, disease, uploadDate, processedDate)";
+insertIntoImages = insertIntoImages + "VALUES ('TestImage.jpg', 'banaanuid', 'jpg', 'Blight_Early', GetDate(), NULL);"
+connection.executeQuery(insertIntoImages);
 
 # Janked this scheduler from tutorialspoint
 # https://www.tutorialspoint.com/python/python_thread_scheduling.htm

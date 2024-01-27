@@ -28,7 +28,10 @@ class DatabaseConnector:
             self.conn.close()
             print("Connection closed")
     
-    def executeQuery(self, query, params=None):
+
+    def executeReadQuery(self, query, params=None):
+        # This query will read, not insert new values or create new tables
+        # If you do that, then the cursor.fetchall will crash
         if not self.conn:
             print("Not connected to the db")
             return;
@@ -37,6 +40,19 @@ class DatabaseConnector:
                 cursor.execute(query, params) if params else cursor.execute(query)
                 for row in cursor.fetchall():
                      print(row);
+                self.conn.commit()
+                print("Query executed successfully")
+            except Exception as e:
+                print(f"Error executing the query: {e}")
+                self.conn.rollback()
+                
+    def executeQuery(self, query, params=None):
+        if not self.conn:
+            print("Not connected to the db")
+            return;
+        with self.conn.cursor() as cursor:
+            try:
+                cursor.execute(query, params) if params else cursor.execute(query)
                 self.conn.commit()
                 print("Query executed successfully")
             except Exception as e:
