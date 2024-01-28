@@ -56,9 +56,5 @@ actions = {
 action = actions.get(predicted_class_name, lambda: print("Unrecognized Picture."))
 action()
 
-# checks_dao.addCheck(check)
-# print(check.momentOfCheck)
-# checkDao = ChecksDao()
-# checkDao.addCheck(check)
-
+# this script simulates a way the main file could work with running the learned model. 
 
