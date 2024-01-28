@@ -82,6 +82,7 @@
     <Folder Include="Models\__pycache__\" />
     <Folder Include="Global\" />
     <Folder Include="InitialzeHandlers\" />
+    <Folder Include="sql_queries\" />
     <Folder Include="RuntimeHandlers\" />
     <Folder Include="Tests\" />
     <Folder Include="Tests\TestsRens\" />
@@ -7229,6 +7230,7 @@
     <Content Include="MachineLearningModel\input\new_plant_diseases_dataset\valid\Potato___Late_blight\ff7160f9-f8d7-4576-82b8-009bf1b63b3b___RS_LB 4974_flipTB.JPG" />
     <Content Include="Models\__pycache__\checksModel.cpython-311.pyc" />
     <Content Include="Models\__pycache__\__init__.cpython-311.pyc" />
+    <Content Include="sql_queries\CreateImageTable.sql" />
     <Content Include="Tests\TestsRens\PythonTests\__pycache__\FileHandler.cpython-311.pyc" />
     <Content Include="Tests\TestsRens\PythonTests\__pycache__\FileHandler2.cpython-311.pyc" />
     <Content Include="Tests\TestsRens\PythonTests\__pycache__\FileHandlerEnums.cpython-311.pyc" />

@@ -12,3 +12,6 @@
 /pythonmain/Lib/site-packages/pip/_internal
 /pythonmain/Lib/site-packages/pip/_internal/cli\__pycache__
 __pycache__
+\pythonmain
+\\pythonmain
+\pythonmain
