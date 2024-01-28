@@ -2,7 +2,8 @@
 from InitialzeHandlers.MainPart1_Directories import Directories;
 from InitialzeHandlers.MainPart2_TrainTheModel import TrainTheModel;
 Directories.MainPart1_Method();
-#TrainTheModel.MainPart2_Method();
+#TrainTheModel.MainPart2_Method
+
 
 # Connect to the database
 # can we put this in the MainPart3?
