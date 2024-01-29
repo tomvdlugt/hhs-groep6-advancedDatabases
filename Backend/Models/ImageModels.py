@@ -1,3 +1,4 @@
+import datetime
 allowedExtensions = {"jpg","png"}
 
 class UploadedFileRules:
@@ -11,17 +12,19 @@ class UploadedFileRules:
 # healthy: 0 = unprocessed, 1 = healthy, 2 = not healthy, 3 intended to be unidentified, but not yet implemented
 # 
 class NewImageModel:
-    def __init__(self, originalName: str, uuidName: str, extension: str, healthy: int, giventime = None):
+    def __init__(self, originalName: str, uuidName: str, extension: str, healthy: int, uploadDate: datetime= None):
         self.originalName = originalName;
         self.uuidName = uuidName;
         self.extension = extension;
         self.healthy = healthy;
-        if(giventime != None):
-            self.giventime = giventime;
+        if(uploadDate != None): # is a nullable value, chosing not to get it will not return it.
+            self.uploadDate = uploadDate;
 
 class ProcessedModel:
-    def __init__(self, originalName: str, uuidName: str, extension: str, healthy: int):
+    def __init__(self, originalName: str, uuidName: str, extension: str, healthy: int, uploadDate: datetime, processedDate: datetime):
         self.originalName = originalName;
         self.uuidName = uuidName;
         self.extension = extension;
         self.healthy = healthy;
+        self.uploadDate = uploadDate;
+        self.processedDate = processedDate; # not nullable in this model, either its new, or its never there to begin with!
