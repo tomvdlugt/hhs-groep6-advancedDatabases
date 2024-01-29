@@ -1,5 +1,6 @@
 # Define the paths to your dataset
 import os
+from Handler.FileHandler import FileHandler as FileHandler_Class; 
 
 # gets the root project path
 base_path = os.getcwd()
@@ -7,14 +8,14 @@ base_path = os.getcwd()
 print(base_path)
 
 # Sets paths to the folders
-base_directory = f"{base_path}/Machine learning model/input/new_plant_diseases_dataset"
-train_path = base_directory + '/train'
-valid_path = base_directory + '/valid'
-test_path = base_directory + '/test/'
-trained_models = base_path + '/trained_models/'
+base_directory = FileHandler_Class.ParseDirectoryPath(f"{base_path}/MachineLearningModel/input/new_plant_diseases_dataset");
+train_path = FileHandler_Class.ParseDirectoryPath(base_directory + '/train')
+valid_path = FileHandler_Class.ParseDirectoryPath(base_directory + '/valid')
+test_path = FileHandler_Class.ParseDirectoryPath(base_directory + '/test')
+trained_models = FileHandler_Class.ParseDirectoryPath(base_path + '/trained_models')
 
 # Sets the amount of epochs ran by the training
-epochs = 5
+epochs = 4
 
 #
 batch_size = 30

@@ -16,3 +16,4 @@ if __name__ == "__main__":
     
     # draws diagram of the training result
     model.plot_metrics(history)
+    print("done")

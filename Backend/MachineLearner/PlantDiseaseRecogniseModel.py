@@ -16,10 +16,10 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.metrics import classification_report , confusion_matrix , accuracy_score , auc
-from sklearn.model_selection import train_test_split
+#from sklearn.metrics import classification_report , confusion_matrix , accuracy_score , auc
+#from sklearn.model_selection import train_test_split
 
-import cv2
+#import cv2
 #from google.colab.patches import cv2_imshow
 from PIL import Image 
 import tensorflow as tf
@@ -27,7 +27,7 @@ from tensorflow import keras
 from keras import Sequential
 from keras.layers import Input, Dense,Conv2D , MaxPooling2D, Flatten,BatchNormalization,Dropout
 from keras.preprocessing import image_dataset_from_directory
-import tensorflow_hub as hub 
+#import tensorflow_hub as hub 
 
 from keras.applications import MobileNetV2
 from keras.applications.vgg19 import VGG19

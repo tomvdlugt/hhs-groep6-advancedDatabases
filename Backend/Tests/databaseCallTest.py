@@ -3,20 +3,22 @@ from Models.checksModel import ChecksModel
 from DAO.checkDao import ChecksDao
 from keras.models import load_model
 from keras.preprocessing import image
+from keras.layers import InputLayer
 import numpy as np
+from Handler.FileHandler import FileHandler as FileHandler_Class; ## required to parse out proper directory
 
 db = DatabaseConnector()
 db.connect()
 checks_dao = ChecksDao(db)
 
 # Load the pre-trained model
-model = load_model('Backend/trainedModel/plantDiseaseRecognitionModel28012024_123422.h5')
+model = load_model('D:\\Projects_D\\S5_Groep6\\PlantenHerkenning\\Backend\\trainedModel\\plantDiseaseRecognitionModel28012024_123422.h5')
 
 # Define class names based on your model's training
 class_names = ['Early_blight', 'Late_blight', 'healthy']
 
 # Load and preprocess the image
-img = image.load_img('/Users/tom/Documents/programming/HHS/Semester 5/Onderdeel 3/hhs-groep6-advancedDatabases/Machine learning model/input/new_plant_diseases_dataset/valid/Potato___Late_blight/1f560f09-0b70-40c9-b907-4cac9ba47b8d___RS_LB 3184.JPG', target_size=(224, 224))
+img = image.load_img('\\MachineLearningModel\\input\\new_plant_diseases_dataset\\valid\\Potato___Late_blight\\Potato___Late_blight\\1f560f09-0b70-40c9-b907-4cac9ba47b8d___RS_LB 3184.JPG', target_size=(224, 224))
 img_array = image.img_to_array(img)
 img_array = np.expand_dims(img_array, axis=0)
 img_array /= 255.

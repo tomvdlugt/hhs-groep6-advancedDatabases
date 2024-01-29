@@ -12,10 +12,9 @@ from tensorflow import keras
 from keras.models import Sequential
 from keras.layers import Dense,Dropout,Flatten
 from keras.layers import Conv2D,MaxPooling2D,Activation,AveragePooling2D,BatchNormalization
-train_dir = "/Users/tom/Documents/Documents/Projects/HHS/Semester 5/portfolio 3/hhs-groep6-advancedDatabases/MachineLearningModel/input/new_plant_diseases_dataset/train"
-train_dir = root
-test_dir = "/Users/tom/Documents/Documents/Projects/HHS/Semester 5/portfolio 3/hhs-groep6-advancedDatabases/MachineLearningModel/input/new_plant_diseases_dataset/test"
-valid_dir = "/Users/tom/Documents/Documents/Projects/HHS/Semester 5/portfolio 3/hhs-groep6-advancedDatabases/MachineLearningModel/input/new_plant_diseases_dataset/valid"
+train_dir = "D:\\Projects_D\\S5_Groep6\\PlantenHerkenning\\Backend\\MachineLearningModel\\input\\new_plant_diseases_dataset\\train"
+test_dir = "D:\\Projects_D\\S5_Groep6\\PlantenHerkenning\\Backend\\MachineLearningModel\\input\\new_plant_diseases_dataset\\test"
+valid_dir = "D:\\Projects_D\\S5_Groep6\\PlantenHerkenning\\Backend\\MachineLearningModel\\input\\new_plant_diseases_dataset\\valid"
 
 def get_files(directory):
     if not os.path.exists(directory):
@@ -23,17 +22,17 @@ def get_files(directory):
     count = 0
     for current_path, dirs, files, in os.walk(directory):
         for dr in dirs:
-            count += len(glob.glob(os.path.join(current_path, dr+"/*")))
+            count += len(glob.glob(os.path.join(current_path, dr+"\\*")))
     return count
 
 train_samples = get_files(train_dir)
-num_class_train = len(glob.glob(train_dir+"/*"))
+num_class_train = len(glob.glob(train_dir+"\\*"))
 
 test_samples = get_files(test_dir)
-num_classes_test = len(glob.glob(test_dir+"/*"))
+num_classes_test = len(glob.glob(test_dir+"\\*"))
 
 valid_samples = get_files(valid_dir)
-num_classes_valid = len(glob.glob(valid_dir+"/*"))
+num_classes_valid = len(glob.glob(valid_dir+"\\*"))
 
 # print(num_class_train, "classes")
 # print(train_samples, "train images")

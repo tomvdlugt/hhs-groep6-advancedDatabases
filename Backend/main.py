@@ -25,7 +25,8 @@ machineLearningDirectoriesModel = InitialiazeModels_Class.InitializeMachineLearn
 from Models.MachineLearningOutputModels import MLD_OutputClassesModel, MLD_OutputImageModel;
 from Handler.FileHandler import FileHandler as FileHandler_Class; ## required to parse out proper directory
 # Load the pre-trained model
-from keras.models import load_model
+from tensorflow.keras.models import load_model
+#from keras.models import load_model
 trainedModel_Class = MLD_OutputClassesModel;
 trainedModelFile = trainedModel_Class(FileHandler_Class.ParseDirectoryPath(pythonDirectoriesModel.projectRoot + "/trainedModel/plantDiseaseRecognitionModel28012024_123422.h5"), ['Early_blight', 'Late_blight', 'healthy']);
 loadedModel = load_model(trainedModelFile.trainedFileName);
