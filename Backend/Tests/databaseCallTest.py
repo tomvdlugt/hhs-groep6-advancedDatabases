@@ -13,10 +13,10 @@ checks_dao = ChecksDao(db)
 model = load_model('Backend/trainedModel/plantDiseaseRecognitionModel28012024_123422.h5')
 
 # Define class names based on your model's training
-class_names = ['Early_blight', 'healthy', 'Late_blight']
+class_names = ['Early_blight', 'Late_blight', 'healthy']
 
 # Load and preprocess the image
-img = image.load_img('Backend/Tests/test_image/PotatoEarlyBlight4.JPG', target_size=(224, 224))
+img = image.load_img('/Users/tom/Documents/programming/HHS/Semester 5/Onderdeel 3/hhs-groep6-advancedDatabases/Machine learning model/input/new_plant_diseases_dataset/valid/Potato___Late_blight/1f560f09-0b70-40c9-b907-4cac9ba47b8d___RS_LB 3184.JPG', target_size=(224, 224))
 img_array = image.img_to_array(img)
 img_array = np.expand_dims(img_array, axis=0)
 img_array /= 255.
