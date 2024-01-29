@@ -7,9 +7,6 @@ class Directories:
         #FileHandler_Class = FileHandler;
         from Models import ImageProcessingDirectoriesModel
 
-        systemModel = InitialiazeModels.InitialiazeModels.InitializeOperatingSystem();
-        systemModel = InitialiazeModels.InitialiazeModels.InitializeOperatingSystem();
-        systemModel = InitialiazeModels.InitialiazeModels.InitializeOperatingSystem();
         systemModel = InitialiazeModels_Class.InitializeOperatingSystem();
         pythonDirectoriesModel = InitialiazeModels_Class.InitializePythonDirectoriesModel();
         machineLearningDirectoriesModel = InitialiazeModels_Class.InitializeMachineLearningDirectoriesModel(pythonDirectoriesModel.projectRoot);

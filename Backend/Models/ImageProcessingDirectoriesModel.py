@@ -1,6 +1,3 @@
-from re import S
-
-
 class ImageProcessingDirectoriesModel:
     def __init__(self, mainImagesPath, rawImagesPath, processedImagesPath, trainedImagesPath):
         self.mainImagesPath = mainImagesPath;
