@@ -39,6 +39,8 @@ class DatabaseConnector:
             try:
                 cursor.execute(query, params) if params else cursor.execute(query)
                 for row in cursor.fetchall():
+                    #todo 
+                    #expand with proper log files  
                      print(row);
                 self.conn.commit()
                 print("Query executed successfully")

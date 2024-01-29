@@ -36,12 +36,19 @@
     <Compile Include="InitialzeHandlers\MainPart2_TrainTheModel.py" />
     <Compile Include="InitialzeHandlers\MainPart3_ConnectToDatabase.py" />
     <Compile Include="InitialzeHandlers\MainPart1_Directories.py" />
+    <Compile Include="MachineLearner\config.py" />
+    <Compile Include="MachineLearner\helpers.py" />
+    <Compile Include="MachineLearner\main.py" />
+    <Compile Include="MachineLearner\PlantDiseaseRecogniseModel.py" />
+    <Compile Include="MachineLearner\run.py" />
+    <Compile Include="MachineLearner\showing_plant.py" />
     <Compile Include="MachineLearningModel\main.py" />
     <Compile Include="main.py" />
     <Compile Include="Models\checksModel.py" />
     <Compile Include="Models\ImageModels.py" />
     <Compile Include="Models\ImageProcessingDirectoriesModel.py" />
     <Compile Include="Models\MachineLearningDirectoriesModel.py" />
+    <Compile Include="Models\MachineLearningOutputModels.py" />
     <Compile Include="Models\PythonDirectoriesModel.py" />
     <Compile Include="Models\SystemModel.py" />
     <Compile Include="Models\__init__.py" />
@@ -82,6 +89,7 @@
     <Folder Include="Models\__pycache__\" />
     <Folder Include="Global\" />
     <Folder Include="InitialzeHandlers\" />
+    <Folder Include="MachineLearner\" />
     <Folder Include="sql_queries\" />
     <Folder Include="RuntimeHandlers\" />
     <Folder Include="Tests\" />
