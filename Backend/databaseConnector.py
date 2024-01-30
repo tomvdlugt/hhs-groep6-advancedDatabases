@@ -7,10 +7,11 @@ import pyodbc
 
 class DatabaseConnector:
     def __init__(self):
+        from AppSettings.ConnectionStrings import USERNAME, PASSWORD
         self.SERVER = 'groep6server.database.windows.net'
         self.DATABASE = 'PlantenZiektenHerkenner'
-        self.USERNAME = 'tom_cielo@groep6server'
-        self.PASSWORD = 'Scoerabi294979!'
+        self.USERNAME = USERNAME
+        self.PASSWORD = PASSWORD
         self.DRIVER= '{ODBC Driver 18 for SQL Server}'
         self.conn = None
 

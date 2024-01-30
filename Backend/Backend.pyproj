@@ -22,6 +22,8 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AppSettings\ConnectionStringsTemplate.py" />
+    <Compile Include="AppSettings\ConnectionStrings.py" />
     <Compile Include="DAO\checkDao.py" />
     <Compile Include="DAO\__init__.py" />
     <Compile Include="databaseConnector.py" />
@@ -76,6 +78,9 @@
     <Folder Include="MachineLearningModel\input\" />
     <Folder Include="MachineLearningModel\input\new_plant_diseases_dataset\" />
     <Folder Include="MachineLearningModel\input\new_plant_diseases_dataset\test\" />
+    <Folder Include="MachineLearningModel\input\new_plant_diseases_dataset\test\Potato___Early_blight\" />
+    <Folder Include="MachineLearningModel\input\new_plant_diseases_dataset\test\Potato___healthy\" />
+    <Folder Include="MachineLearningModel\input\new_plant_diseases_dataset\trained_models\" />
     <Folder Include="MachineLearningModel\input\new_plant_diseases_dataset\train\" />
     <Folder Include="MachineLearningModel\input\new_plant_diseases_dataset\train\Potato___Early_blight\" />
     <Folder Include="MachineLearningModel\input\new_plant_diseases_dataset\train\Potato___healthy\" />
@@ -90,6 +95,7 @@
     <Folder Include="Global\" />
     <Folder Include="InitialzeHandlers\" />
     <Folder Include="MachineLearner\" />
+    <Folder Include="AppSettings\" />
     <Folder Include="sql_queries\" />
     <Folder Include="RuntimeHandlers\" />
     <Folder Include="Tests\" />
@@ -97,6 +103,7 @@
     <Folder Include="Tests\TestsRens\PythonTests\" />
     <Folder Include="Tests\TestsRens\PythonTests\__pycache__\" />
     <Folder Include="Tests\TestsTom\" />
+    <Folder Include="Tests\test_image\" />
     <Folder Include="trainedModel\" />
     <Folder Include="__pycache__\" />
   </ItemGroup>
@@ -104,11 +111,13 @@
     <Content Include="DAO\__pycache__\checkDao.cpython-311.pyc" />
     <Content Include="DAO\__pycache__\__init__.cpython-311.pyc" />
     <Content Include="Handler\__pycache__\FileHandler.cpython-311.pyc" />
-    <Content Include="MachineLearningModel\input\new_plant_diseases_dataset\test\PotatoEarlyBlight1.JPG" />
-    <Content Include="MachineLearningModel\input\new_plant_diseases_dataset\test\PotatoEarlyBlight2.JPG" />
-    <Content Include="MachineLearningModel\input\new_plant_diseases_dataset\test\PotatoEarlyBlight3.JPG" />
-    <Content Include="MachineLearningModel\input\new_plant_diseases_dataset\test\PotatoEarlyBlight4.JPG" />
-    <Content Include="MachineLearningModel\input\new_plant_diseases_dataset\test\PotatoEarlyBlight5.JPG" />
+    <Content Include="MachineLearningModel\input\new_plant_diseases_dataset\test\Potato___Early_blight\PotatoEarlyBlight1.JPG" />
+    <Content Include="MachineLearningModel\input\new_plant_diseases_dataset\test\Potato___Early_blight\PotatoEarlyBlight2.JPG" />
+    <Content Include="MachineLearningModel\input\new_plant_diseases_dataset\test\Potato___Early_blight\PotatoEarlyBlight3.JPG" />
+    <Content Include="MachineLearningModel\input\new_plant_diseases_dataset\test\Potato___Early_blight\PotatoEarlyBlight4.JPG" />
+    <Content Include="MachineLearningModel\input\new_plant_diseases_dataset\test\Potato___Early_blight\PotatoEarlyBlight5.JPG" />
+    <Content Include="MachineLearningModel\input\new_plant_diseases_dataset\test\Potato___healthy\PotatoHealthy1.JPG" />
+    <Content Include="MachineLearningModel\input\new_plant_diseases_dataset\test\Potato___healthy\PotatoHealthy2.JPG" />
     <Content Include="MachineLearningModel\input\new_plant_diseases_dataset\train\Potato___Early_blight\001187a0-57ab-4329-baff-e7246a9edeb0___RS_Early.B 8178.JPG" />
     <Content Include="MachineLearningModel\input\new_plant_diseases_dataset\train\Potato___Early_blight\001187a0-57ab-4329-baff-e7246a9edeb0___RS_Early.B 8178_180deg.JPG" />
     <Content Include="MachineLearningModel\input\new_plant_diseases_dataset\train\Potato___Early_blight\001187a0-57ab-4329-baff-e7246a9edeb0___RS_Early.B 8178_flipTB.JPG" />
@@ -7243,6 +7252,13 @@
     <Content Include="Tests\TestsRens\PythonTests\__pycache__\FileHandler.cpython-311.pyc" />
     <Content Include="Tests\TestsRens\PythonTests\__pycache__\FileHandler2.cpython-311.pyc" />
     <Content Include="Tests\TestsRens\PythonTests\__pycache__\FileHandlerEnums.cpython-311.pyc" />
+    <Content Include="Tests\test_image\PotatoEarlyBlight1.JPG" />
+    <Content Include="Tests\test_image\PotatoEarlyBlight2.JPG" />
+    <Content Include="Tests\test_image\PotatoEarlyBlight3.JPG" />
+    <Content Include="Tests\test_image\PotatoEarlyBlight4.JPG" />
+    <Content Include="Tests\test_image\PotatoEarlyBlight5.JPG" />
+    <Content Include="Tests\test_image\PotatoHealthy1.JPG" />
+    <Content Include="Tests\test_image\PotatoHealthy2.JPG" />
     <Content Include="trainedModel\trained_modelsplantDiseaseRecognitionModel30012024_200549.h5" />
     <Content Include="__pycache__\databaseConnector.cpython-311.pyc" />
     <Content Include="__pycache__\__init__.cpython-311.pyc" />
