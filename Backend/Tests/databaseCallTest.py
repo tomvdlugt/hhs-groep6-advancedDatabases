@@ -12,7 +12,7 @@ db.connect()
 checks_dao = ChecksDao(db)
 
 # Load the pre-trained model
-model = load_model('D:\\Projects_D\\S5_Groep6\\PlantenHerkenning\\Backend\\trainedModel\\plantDiseaseRecognitionModel28012024_123422.h5')
+model = load_model('D:\\Projects_D\\S5_Groep6\\PlantenHerkenning\\Backend\\trainedModel\\trained_modelsplantDiseaseRecognitionModel30012024_200549.h5')
 
 # Define class names based on your model's training
 class_names = ['Early_blight', 'Late_blight', 'healthy']

@@ -97,6 +97,7 @@
     <Folder Include="Tests\TestsRens\PythonTests\" />
     <Folder Include="Tests\TestsRens\PythonTests\__pycache__\" />
     <Folder Include="Tests\TestsTom\" />
+    <Folder Include="trainedModel\" />
     <Folder Include="__pycache__\" />
   </ItemGroup>
   <ItemGroup>
@@ -7242,6 +7243,7 @@
     <Content Include="Tests\TestsRens\PythonTests\__pycache__\FileHandler.cpython-311.pyc" />
     <Content Include="Tests\TestsRens\PythonTests\__pycache__\FileHandler2.cpython-311.pyc" />
     <Content Include="Tests\TestsRens\PythonTests\__pycache__\FileHandlerEnums.cpython-311.pyc" />
+    <Content Include="trainedModel\trained_modelsplantDiseaseRecognitionModel30012024_200549.h5" />
     <Content Include="__pycache__\databaseConnector.cpython-311.pyc" />
     <Content Include="__pycache__\__init__.cpython-311.pyc" />
   </ItemGroup>

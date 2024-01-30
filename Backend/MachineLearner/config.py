@@ -15,7 +15,7 @@ test_path = FileHandler_Class.ParseDirectoryPath(base_directory + '/test')
 trained_models = FileHandler_Class.ParseDirectoryPath(base_path + '/trained_models')
 
 # Sets the amount of epochs ran by the training
-epochs = 4
+epochs = 5
 
 #
-batch_size = 30
+batch_size = 40
