@@ -3,38 +3,86 @@ from InitialzeHandlers.MainPart1_Directories import Directories;
 from InitialzeHandlers.MainPart2_TrainTheModel import TrainTheModel;
 Directories.MainPart1_Method();
 #TrainTheModel.MainPart2_Method
+from Handler.FileHandler import FileHandler as FileHandler_Class; ## required to parse out proper directory
 # load mainpart 3 = trained model
+# load image model
+from Models.ImageModels import NewImageModel, ALLOWEDEXTENSIONS, ALLOWEDBACKENDEXTENSIONS
+incomingFileDirectory = FileHandler_Class.ParseDirectoryPath("D:/Projects_D/S5_Groep6/PlantenHerkenning/Backend/Images/Incoming/");
+
+#testImages
+incomingFileName = "PotatoEarlyBlight1.JPG";
+incomingFileName_2 = "PotatoEarlyBlight2.JPG";
+#incomingFileNameImproper = "PotatoEarlyBlight1.exe";
+
+givenImageArray = [incomingFileName, incomingFileName_2]
 
 
+for arrayFileInstance in givenImageArray:
+    fileAccepted = False;
+    for givenExtension in ALLOWEDEXTENSIONS:
+       if(arrayFileInstance[arrayFileInstance.find("."):].lower().replace(".","") == givenExtension):
+          fileAccepted = True;
+          break;
 
+    if not fileAccepted:
+       print("Possible malicious filetype detected, breaking off run to protect the system.");
+       FileHandler_Class.RemoveFile(incomingFileDirectory+arrayFileInstance)
+       raise Exception(f"Given file for the model is not allowed, removed the file prematurely. Filename that was given: {arrayFileInstance}");
+# Checking files complete, proceed to connect to the Database 
+from databaseConnector import DatabaseConnector;
+from DAO.checkDao import ChecksDao
+connection_Class = DatabaseConnector(); 
+connection_Class.connect();
+checksDao_Class = ChecksDao(connection_Class)
+# Process the new files    
+#createDevelopTable = "Create TABLE UploadedImages (";
+#createDevelopTable = createDevelopTable + "imageId int IDENTITY(1,1) PRIMARY KEY, originalName varchar(255), uuidName  varchar(255), extension varchar(10), ";
+#createDevelopTable = createDevelopTable + "healthy int, plant_disease  varchar(255), uploadDate  datetime,  processedDate  datetime null);";
+#connection_Class.executeQuery(createDevelopTable);
+for arrayFileInstance in givenImageArray:
+    from Models.ImageModels import NewImageModel
+    newImageModel = FileHandler_Class.MoveIncommingToProcessed(arrayFileInstance);
+    insertIntoImages = f"INSERT INTO Images ('{newImageModel.originalName}', '{newImageModel.uuidName}',";
+    insertIntoImages = f"{insertIntoImages},'{newImageModel.extension}','{newImageModel.healthy}'";
+    insertIntoImages = f"{insertIntoImages},'{newImageModel.plant_disease}','{newImageModel.uploadDate}')";
+    connection_Class.executeQuery(insertIntoImages);
 
 # Connect to the database
 # can we put this in the MainPart3?
-from databaseConnector import DatabaseConnector;
-from DAO.checkDao import ChecksDao
-connection_Class = DatabaseConnector(); #trigger the __init__(self)
-connection_Class.connect();
-checksDao_Class = ChecksDao(connection_Class)
+
+
+
+
+#connection.executeQuery("select * from [dbo].[checks]");
+#connection.executeQuery("Create TABLE Images( imageId int IDENTITY(1,1) PRIMARY KEY, originalName varchar(255) , uuidName  varchar(255), extension varchar(10), disease  varchar(255), uploadDate  datetime, processedDate  datetime null);");
+#connection.executeQuery("Create TABLE Images( imageId int IDENTITY(1,1) PRIMARY KEY, originalName varchar(255) , uuidName  varchar(255), extension varchar(10), disease  varchar(255), uploadDate  datetime, processedDate  datetime null);");
+insertIntoImages = "INSERT INTO Images (originalName, uuidName, extension, disease, uploadDate, processedDate)";
+insertIntoImages = insertIntoImages + "VALUES ('TestImage.jpg', 'banaanuid', 'jpg', 'Blight_Early', GetDate(), NULL);"
+connection_Class.executeQuery(insertIntoImages);
+
+
+
+
+
 # Retrieve Initialize models
-import InitialiazeModels
-InitialiazeModels_Class = InitialiazeModels.InitialiazeModels;
+from InitialiazeModels import InitialiazeModels as InitialiazeModels_Class
 pythonDirectoriesModel = InitialiazeModels_Class.InitializePythonDirectoriesModel();
 machineLearningDirectoriesModel = InitialiazeModels_Class.InitializeMachineLearningDirectoriesModel(pythonDirectoriesModel.projectRoot);
 
 # Get trained model
 from Models.MachineLearningOutputModels import MLD_OutputClassesModel, MLD_OutputImageModel;
-from Handler.FileHandler import FileHandler as FileHandler_Class; ## required to parse out proper directory
+
 # Load the pre-trained model
 from tensorflow.keras.models import load_model
 #from keras.models import load_model
 trainedModel_Class = MLD_OutputClassesModel;
-trainedModelFile = trainedModel_Class(FileHandler_Class.ParseDirectoryPath(pythonDirectoriesModel.projectRoot + "/trainedModel/plantDiseaseRecognitionModel28012024_123422.h5"), ['Early_blight', 'Late_blight', 'healthy']);
+trainedModelFile = trainedModel_Class(FileHandler_Class.ParseDirectoryPath(pythonDirectoriesModel.projectRoot + "\\trainedModel\\trained_modelsplantDiseaseRecognitionModel30012024_200549.h5"), ['Early_blight', 'Late_blight', 'healthy']);
 loadedModel = load_model(trainedModelFile.trainedFileName);
 trainedModelFile.loadedLearnedModel = loadedModel;
 
 # Load target model base
 trainedModelImage_1 = MLD_OutputImageModel;
-trainedModelImage_1 = trainedModel_Class(FileHandler_Class.ParseDirectoryPath(machineLearningDirectoriesModel.valid_path + "/Potato___Late_blight/1f560f09-0b70-40c9-b907-4cac9ba47b8d___RS_LB 3184.JPG"));
+trainedModelImage_1 = trainedModel_Class(FileHandler_Class.ParseDirectoryPath(machineLearningDirectoriesModel.valid_path + "/Potato___Late_blight/0b2bdc8e-90fd-4bb4-bedb-485502fe8a96___RS_LB 4906.JPG"));
 # Process target model
 import numpy
 from keras.preprocessing import image
