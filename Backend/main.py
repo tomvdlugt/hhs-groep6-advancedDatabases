@@ -16,7 +16,6 @@ incomingFileName_2 = "PotatoEarlyBlight2.JPG";
 
 givenImageArray = [incomingFileName, incomingFileName_2]
 
-
 for arrayFileInstance in givenImageArray:
     fileAccepted = False;
     for givenExtension in ALLOWEDEXTENSIONS:
@@ -34,18 +33,33 @@ from DAO.checkDao import ChecksDao
 connection_Class = DatabaseConnector(); 
 connection_Class.connect();
 checksDao_Class = ChecksDao(connection_Class)
+print("")
+print("Before processing the files");
+print("");
+connection_Class.executeReadQuery("select * from dbo.UploadedImages");
+print("");
 # Process the new files    
 #createDevelopTable = "Create TABLE UploadedImages (";
 #createDevelopTable = createDevelopTable + "imageId int IDENTITY(1,1) PRIMARY KEY, originalName varchar(255), uuidName  varchar(255), extension varchar(10), ";
 #createDevelopTable = createDevelopTable + "healthy int, plant_disease  varchar(255), uploadDate  datetime,  processedDate  datetime null);";
 #connection_Class.executeQuery(createDevelopTable);
+
+
+#stap 3
 for arrayFileInstance in givenImageArray:
     from Models.ImageModels import NewImageModel
     newImageModel = FileHandler_Class.MoveIncommingToProcessed(arrayFileInstance);
-    insertIntoImages = f"INSERT INTO Images ('{newImageModel.originalName}', '{newImageModel.uuidName}',";
-    insertIntoImages = f"{insertIntoImages},'{newImageModel.extension}','{newImageModel.healthy}'";
-    insertIntoImages = f"{insertIntoImages},'{newImageModel.plant_disease}','{newImageModel.uploadDate}')";
+    insertIntoImages = f"INSERT INTO UploadedImages (originalName, uuidName, extension, healthy, plant_disease, uploadDate)";
+    insertIntoImages = f"{insertIntoImages}VALUES('{newImageModel.originalName}','{newImageModel.uuidName}',";
+    insertIntoImages = f"{insertIntoImages}'{newImageModel.extension}','{newImageModel.healthy}',";
+    insertIntoImages = f"{insertIntoImages}'{newImageModel.plant_disease}',GetDate())";
     connection_Class.executeQuery(insertIntoImages);
+S\
+print("")
+print("Before processing the files");
+print("");
+connection_Class.executeReadQuery("select * from dbo.UploadedImages");
+print("");
 
 # Connect to the database
 # can we put this in the MainPart3?
