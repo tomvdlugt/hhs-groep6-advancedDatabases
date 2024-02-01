@@ -54,7 +54,7 @@ for arrayFileInstance in givenImageArray:
     insertIntoImages = f"{insertIntoImages}'{newImageModel.extension}','{newImageModel.healthy}',";
     insertIntoImages = f"{insertIntoImages}'{newImageModel.plant_disease}',GetDate())";
     connection_Class.executeQuery(insertIntoImages);
-S\
+
 print("")
 print("Before processing the files");
 print("");
