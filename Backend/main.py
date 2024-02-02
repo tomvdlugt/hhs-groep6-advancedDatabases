@@ -1,7 +1,9 @@
 #import Models.SystemModel
 from InitialzeHandlers.MainPart1_Directories import Directories;
 from InitialzeHandlers.MainPart2_TrainTheModel import TrainTheModel;
+from InitialzeHandlers.MainPart4_ProcessGivenImages import ProcessImages;
 Directories.MainPart1_Method();
+ProcessImages.MainPart4_Method_CheckIncoming();
 #TrainTheModel.MainPart2_Method
 from Handler.FileHandler import FileHandler as FileHandler_Class; ## required to parse out proper directory
 # load mainpart 3 = trained model
@@ -54,6 +56,7 @@ for arrayFileInstance in givenImageArray:
     insertIntoImages = f"{insertIntoImages}'{newImageModel.extension}','{newImageModel.healthy}',";
     insertIntoImages = f"{insertIntoImages}'{newImageModel.plant_disease}',GetDate())";
     connection_Class.executeQuery(insertIntoImages);
+    
 
 print("")
 print("Before processing the files");
@@ -114,27 +117,6 @@ trainedModelImage_1 = trainedModel_Class(trainedModelImage_1.trainedFileName,tra
 
 from keras.preprocessing import image
 import numpy as np
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#connection.executeQuery("select * from [dbo].[checks]");
-#connection.executeQuery("Create TABLE Images( imageId int IDENTITY(1,1) PRIMARY KEY, originalName varchar(255) , uuidName  varchar(255), extension varchar(10), disease  varchar(255), uploadDate  datetime, processedDate  datetime null);");
-#connection.executeQuery("Create TABLE Images( imageId int IDENTITY(1,1) PRIMARY KEY, originalName varchar(255) , uuidName  varchar(255), extension varchar(10), disease  varchar(255), uploadDate  datetime, processedDate  datetime null);");
-insertIntoImages = "INSERT INTO Images (originalName, uuidName, extension, disease, uploadDate, processedDate)";
-insertIntoImages = insertIntoImages + "VALUES ('TestImage.jpg', 'banaanuid', 'jpg', 'Blight_Early', GetDate(), NULL);"
-connection_Class.executeQuery(insertIntoImages);
-
 
 
 

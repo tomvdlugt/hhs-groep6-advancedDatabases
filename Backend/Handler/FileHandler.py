@@ -1,7 +1,17 @@
+"""
+Do not use AppSettings within the FileHandler
+The AppSettings need the FileHandler to initialize propper paths
+But
+using those paths here will create circular imports, causing memory leaks.
+""" 
+
 class FileHandler:
     #from Global.config import GlobalConfig;
     #print(GlobalConfig.projectRoot);
-    
+    @classmethod
+    def GetProjectRoot(cls):
+        import os;
+        return str(os.getcwd());
 
     @classmethod
     def CheckDirectoryCollectionIntegrity(cls, givenCollection):
@@ -117,6 +127,24 @@ class FileHandler:
         return newImageModel;
 
     @classmethod
+    def MoveIncommingToChecked(cls, fileName, incomingFolder, desiredFolder):
+        #TODO
+        # Instead of receiving images from the root folder, get them from incoming
+        import os; 
+        import shutil;
+        newName = cls.GenerateUid();
+        from Models.ImageModels import NewImageModel
+        from datetime import datetime
+        newImageModel = NewImageModel(fileName, newName, fileName[fileName.find("."):], 0, "InReview", datetime.now())
+        currentFilePath = cls.ParseDirectoryPath(incomingFolder + fileName);
+        fileName = newName + fileName[fileName.find("."):];
+        desiredFilePath = cls.ParseDirectoryPath(desiredFolder + fileName);
+
+        # Rename and place the file in the desired path.
+        os.rename(currentFilePath, desiredFilePath)
+        return newImageModel;
+
+    @classmethod
     def RemoveFile(cls, fileName: str):
         import os; 
         os.remove(fileName);
@@ -138,6 +166,11 @@ class FileHandler:
         import uuid;
 
         print(uuid.uuid4());
+
+    @classmethod
+    def GetAllFilesInDirectory(cls, filePath):
+        import os;
+        return os.listdir(filePath)
 
             
 

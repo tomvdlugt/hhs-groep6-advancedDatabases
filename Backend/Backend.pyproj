@@ -22,6 +22,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AppSettings\AppSettings.py" />
     <Compile Include="AppSettings\ConnectionStringsTemplate.py" />
     <Compile Include="AppSettings\ConnectionStrings.py" />
     <Compile Include="DAO\checkDao.py" />
@@ -32,10 +33,12 @@
     <Compile Include="Global\GlobalVariables.py" />
     <Compile Include="Global\ConfigHandler.py" />
     <Compile Include="Global\Config.py" />
+    <Compile Include="Handler\DatabaseHandler.py" />
     <Compile Include="Handler\FileHandler.py" />
     <Compile Include="InitialiazeModels.py" />
     <Compile Include="InitialzeHandlers\ConnectionModels.py" />
     <Compile Include="InitialzeHandlers\MainPart2_TrainTheModel.py" />
+    <Compile Include="InitialzeHandlers\MainPart4_ProcessGivenImages.py" />
     <Compile Include="InitialzeHandlers\MainPart3_ConnectToDatabase.py" />
     <Compile Include="InitialzeHandlers\MainPart1_Directories.py" />
     <Compile Include="MachineLearner\config.py" />
@@ -62,7 +65,6 @@
     <Compile Include="Tests\TestsRens\PythonTests\ImportVersionPrinter.py" />
     <Compile Include="Tests\TestsRens\PythonTests\tutorial.py" />
     <Compile Include="Tests\TestsTom\__init__.py" />
-    <Compile Include="__init__.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DAO\" />
@@ -96,7 +98,10 @@
     <Folder Include="InitialzeHandlers\" />
     <Folder Include="MachineLearner\" />
     <Folder Include="AppSettings\" />
-    <Folder Include="sql_queries\" />
+    <Folder Include="Cleanup\" />
+    <Folder Include="Data\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\sql_queries\" />
     <Folder Include="RuntimeHandlers\" />
     <Folder Include="Tests\" />
     <Folder Include="Tests\TestsRens\" />
@@ -7248,7 +7253,8 @@
     <Content Include="MachineLearningModel\input\new_plant_diseases_dataset\valid\Potato___Late_blight\ff7160f9-f8d7-4576-82b8-009bf1b63b3b___RS_LB 4974_flipTB.JPG" />
     <Content Include="Models\__pycache__\checksModel.cpython-311.pyc" />
     <Content Include="Models\__pycache__\__init__.cpython-311.pyc" />
-    <Content Include="sql_queries\CreateImageTable.sql" />
+    <Content Include="Resources\sql_queries\CreateImageTable.sql" />
+    <Content Include="Resources\sql_queries\InsertImages.sql" />
     <Content Include="Tests\TestsRens\PythonTests\__pycache__\FileHandler.cpython-311.pyc" />
     <Content Include="Tests\TestsRens\PythonTests\__pycache__\FileHandler2.cpython-311.pyc" />
     <Content Include="Tests\TestsRens\PythonTests\__pycache__\FileHandlerEnums.cpython-311.pyc" />

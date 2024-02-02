@@ -1,6 +1,11 @@
 import datetime
+from Handler.FileHandler import FileHandler as FileHandler_Class; ## required to parse out proper directory
+
 ALLOWEDEXTENSIONS = {"jpg","png"}
 ALLOWEDBACKENDEXTENSIONS = {"jpg","png", "h5"}
+INCOMINGFOLDER =  FileHandler_Class.ParseDirectoryPath("D:\\Projects_D\\S5_Groep6\\PlantenHerkenning\\Backend\\DemoFolder\\DatasetShuffled\\Incoming\\");
+CHECKEDFOLDER = FileHandler_Class.ParseDirectoryPath("D:\\Projects_D\\S5_Groep6\\PlantenHerkenning\\Backend\\DemoFolder\\DatasetShuffled\\Checked\\");
+PROCESSEDFOLDER = FileHandler_Class.ParseDirectoryPath("");
 
 class UploadedFileRules:
     def __init__(self):
