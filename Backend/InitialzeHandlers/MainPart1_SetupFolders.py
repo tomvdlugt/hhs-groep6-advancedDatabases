@@ -28,7 +28,7 @@ class Setup:
         #query = "INSERT INTO dbo.checks (moment_of_check, healthy, plant_disease) VALUES (?, ?, ?)"
         #params = (checksModel.momentOfCheck, checksModel.healthy, checksModel.plant_disease)
         """
-        The tests are dividide up into 2 users by 3 checks
+        The tests are divided up into 2 users by 3 checks
         check 1: Is the user connected?
         check 2: Is the user allowed to read results?
         check 3: Is the user allowed to insert data?
