@@ -15,14 +15,37 @@ class DatabaseConnector:
         self.DRIVER= '{ODBC Driver 18 for SQL Server}'
         self.conn = None
 
+    def connect_test(self, userNameGiven: str, passwordGiven: str, databaseGiven: str):
+        try:
+            self.conn = pyodbc.connect(f'DRIVER={self.DRIVER};SERVER={self.SERVER};'
+                                        f'DATABASE={databaseGiven};UID={userNameGiven};PWD={passwordGiven}')
+            print("Connected to the database")
+            return True;
+        except Exception as e:
+            print(f'Error connecting to the database: {e}')
+            return False;
+
     def connect(self):
         if not self.conn:
             try:
                 self.conn = pyodbc.connect(f'DRIVER={self.DRIVER};SERVER={self.SERVER};'
                                            f'DATABASE={self.DATABASE};UID={self.USERNAME};PWD={self.PASSWORD}')
                 print("Connected to the database")
+                return True;
             except Exception as e:
                 print(f'Error connecting to the database: {e}')
+                return False;
+
+    def connect(self):
+        if not self.conn:
+            try:
+                self.conn = pyodbc.connect(f'DRIVER={self.DRIVER};SERVER={self.SERVER};'
+                                           f'DATABASE={self.DATABASE};UID={self.USERNAME};PWD={self.PASSWORD}')
+                print("Connected to the database")
+                return True;
+            except Exception as e:
+                print(f'Error connecting to the database: {e}')
+                return False;
 
     def close(self):
         if self.conn:
@@ -52,13 +75,15 @@ class DatabaseConnector:
     def executeQuery(self, query, params=None):
         if not self.conn:
             print("Not connected to the db")
-            return;
+            return False;
         with self.conn.cursor() as cursor:
             try:
                 cursor.execute(query, params) if params else cursor.execute(query)
                 self.conn.commit()
                 print("Query executed successfully")
+                return True;
             except Exception as e:
                 print(f"Error executing the query: {e}")
                 self.conn.rollback()
+                return False;
         

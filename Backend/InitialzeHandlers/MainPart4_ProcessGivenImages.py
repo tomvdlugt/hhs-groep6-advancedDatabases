@@ -1,5 +1,6 @@
 from Handler.FileHandler import FileHandler as FileHandler_Class; ## required to parse out proper directory
-from Models.ImageModels import NewImageModel, ALLOWEDEXTENSIONS, ALLOWEDBACKENDEXTENSIONS, INCOMINGFOLDER, CHECKEDFOLDER, PROCESSEDFOLDER
+from Models.ImageModels import CheckedImageModel;
+from AppSettings.AppSettings import *;
 
 class ProcessImages:
     @classmethod

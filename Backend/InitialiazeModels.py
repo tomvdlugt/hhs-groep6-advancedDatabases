@@ -1,5 +1,4 @@
 # Models import
-import Models.SystemModel;
 import Models.PythonDirectoriesModel;
 import Models.MachineLearningDirectoriesModel;
 import Models.ImageProcessingDirectoriesModel;
@@ -11,11 +10,6 @@ from Handler.FileHandler import FileHandler as FileHandler_Class
 ## Note: This is a initializer, don't use it inbetween otherwise there will be dependency issues
 ## It will collect all the paths and set them into proper models, allowing easier changes to be made
 class InitialiazeModels:
-    @classmethod
-    def InitializeOperatingSystem(cls):
-        import platform;
-        return Models.SystemModel.SystemModel(platform.system()); 
-
     @classmethod
     def InitializePythonDirectoriesModel(cls):
         import os;

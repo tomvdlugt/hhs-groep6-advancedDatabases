@@ -1,3 +1,6 @@
+"""
+Python
+"""
 from Handler.FileHandler import FileHandler as FH_C; ## required to parse out proper directory
 ALLOWEDEXTENSIONS = {"jpg","png"}
 ALLOWEDBACKENDEXTENSIONS = {"jpg","png", "h5"}
@@ -8,3 +11,10 @@ TRAINEDMODEL = DATAFOLDER + FH_C.ParseDirectoryPath("/TrainedModel");
 INCOMINGFOLDER =  IMAGESFOLDER + FH_C.ParseDirectoryPath("/Incoming");
 CHECKEDFOLDER = IMAGESFOLDER + FH_C.ParseDirectoryPath("\\Checked");
 PROCESSEDFOLDER = IMAGESFOLDER + FH_C.ParseDirectoryPath("/Processed");
+
+"""
+Database
+"""
+SERVER = 'groep6server.database.windows.net'
+DATABASE = 'PlantenZiektenHerkenner'
+DRIVER= '{ODBC Driver 18 for SQL Server}'

@@ -4,7 +4,6 @@ The AppSettings need the FileHandler to initialize propper paths
 But
 using those paths here will create circular imports, causing memory leaks.
 """ 
-
 class FileHandler:
     #from Global.config import GlobalConfig;
     #print(GlobalConfig.projectRoot);
@@ -16,7 +15,7 @@ class FileHandler:
     @classmethod
     def CheckDirectoryCollectionIntegrity(cls, givenCollection):
         for directory in givenCollection:
-            cls.CreateFolder(directory);
+            cls.CreateFolderWithName(directory);
     
     @classmethod
     def CheckDirectoryIntegrity(cls):
@@ -78,7 +77,7 @@ class FileHandler:
                 print("operatingSystem: unknown, hopping the default path is good.\n\tDetected operating system: " + operatingSystem);
                 return givenPath;
         
-    def CreateFolderWithName(path, folderName):
+    def CreateFolderWithName(path: str, folderName: str = 'NoneGiven'):
         import os;
         import platform;
         if(os.path.exists(path)):
@@ -87,24 +86,15 @@ class FileHandler:
              print(f"Folder {folderName} did not exist, creating new folder");
              os.mkdir(path);
              print("Folder created");
-    
-    def CreateFolder(path):
-        import os;
-        import platform;
-        if(os.path.exists(path)):
-            print(f"FolderPath: {path} exists, stopping any further actions.");
-        else:
-            print(f"FolderPath: {path} did not exist, creating new folder");
-            os.mkdir(path);
-            print("Folder created");
-    
-    @classmethod
-    def PlaceIncoming(cls):
-        import os;
-        import platform;
-        import uuid;
 
-        print(uuid.uuid4());
+    @classmethod
+    def MoveFileToFolder(cls, currentFolderPath: str, desiredFolderPath: str, fileName: str, newFileName: str):
+        import os; 
+        currentFolderPath = cls.ParseDirectoryPath(currentFolderPath + "/" + fileName);
+        desiredFolderPath = cls.ParseDirectoryPath(desiredFolderPath + "/" + fileName);
+        os.rename(currentFolderPath, desiredFolderPath)
+        
+
 
     @classmethod
     def MoveIncommingToProcessed(cls, fileName):
@@ -113,9 +103,12 @@ class FileHandler:
         import os; 
         import shutil;
         newName = cls.GenerateUid();
-        from Models.ImageModels import NewImageModel
+        from Models.ImageModels import CheckedImageModel
         from datetime import datetime
-        newImageModel = NewImageModel(fileName, newName, fileName[fileName.find("."):], 0, "InReview", datetime.now())
+        newImageModel = CheckedImageModel(fileName, newName, fileName[fileName.find("."):], 0, "InReview", datetime.now())
+        
+        
+
         
         # the actual moving and renaming
         projectRoot = str(os.getcwd());
@@ -124,24 +117,25 @@ class FileHandler:
         desiredFilePath = cls.ParseDirectoryPath(projectRoot + "\\Images\\Processed\\" + fileName);
         # Rename and place the file in the desired path.
         os.rename(currentFilePath, desiredFilePath)
+        
+        cls.MoveFileToFolder()
         return newImageModel;
 
+    """
+    Use the values assigned within the AppSettings.
+    """
     @classmethod
-    def MoveIncommingToChecked(cls, fileName, incomingFolder, desiredFolder):
-        #TODO
-        # Instead of receiving images from the root folder, get them from incoming
-        import os; 
-        import shutil;
+    def MoveIncommingToChecked(cls, fileName, incomingFolderPath, checkedFolderPath):
         newName = cls.GenerateUid();
-        from Models.ImageModels import NewImageModel
+        givenExtension = fileName[fileName.find("."):];
+        from Models.ImageModels import CheckedImageModel
         from datetime import datetime
-        newImageModel = NewImageModel(fileName, newName, fileName[fileName.find("."):], 0, "InReview", datetime.now())
-        currentFilePath = cls.ParseDirectoryPath(incomingFolder + fileName);
-        fileName = newName + fileName[fileName.find("."):];
-        desiredFilePath = cls.ParseDirectoryPath(desiredFolder + fileName);
-
-        # Rename and place the file in the desired path.
-        os.rename(currentFilePath, desiredFilePath)
+        newImageModel = CheckedImageModel(fileName, newName, givenExtension, 0, "InReview")
+        
+        newFileName = newName + givenExtension;
+    
+        cls.MoveFileToFolder(incomingFolderPath, checkedFolderPath, fileName, newFileName);
+        
         return newImageModel;
 
     @classmethod
@@ -151,12 +145,9 @@ class FileHandler:
         
     @classmethod
     def GenerateUid(cls):
-        import os;
-        import platform;
         import uuid;
-
         generatedUid = uuid.uuid4();
-        print(generatedUid);
+        print("GeneratedUUID: " + generatedUid);
         return str(generatedUid);
     
     @classmethod
@@ -169,6 +160,11 @@ class FileHandler:
 
     @classmethod
     def GetAllFilesInDirectory(cls, filePath):
+        import os;
+        return os.listdir(filePath)
+    
+    @classmethod
+    def CheckIfFileInDirectory(cls, filePath):
         import os;
         return os.listdir(filePath)
 

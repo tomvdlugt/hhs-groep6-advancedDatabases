@@ -1,6 +1,20 @@
+
 class TrainTheModel:
     @classmethod
     def MainPart2_Method(cls):
+        from databaseConnector import DatabaseConnector;
+        from DAO.checkDao import ChecksDao
+        connection_Class = DatabaseConnector(); 
+        #connection_Class.connect();
+        #checksDao_Class = ChecksDao(connection_Class)
+        print("")
+        connection_Class.connect_test(testUserName, testUserPassword, directDatabase)
+        connection_Class.close();
+        print("")
+
+
+
+
         # Import necessary libraries
         import tensorflow as tf
         from tensorflow.keras import layers, models

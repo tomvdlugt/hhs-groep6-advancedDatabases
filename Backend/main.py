@@ -1,14 +1,26 @@
-#import Models.SystemModel
-from InitialzeHandlers.MainPart1_Directories import Directories;
+"""
+Import all the AppSettings, consists of
+    AllowedExtensions
+    FolderPaths
+    FileHandler_Class
+"""
+from AppSettings.AppSettings import *;
+
+
+from InitialzeHandlers.MainPart1_SetupFolders import Setup;
 from InitialzeHandlers.MainPart2_TrainTheModel import TrainTheModel;
 from InitialzeHandlers.MainPart4_ProcessGivenImages import ProcessImages;
-Directories.MainPart1_Method();
+Setup.MainPart1_Directories();
+Setup.MainPart2_TestDatabaseConnection();
+
+
+
 ProcessImages.MainPart4_Method_CheckIncoming();
 #TrainTheModel.MainPart2_Method
 from Handler.FileHandler import FileHandler as FileHandler_Class; ## required to parse out proper directory
 # load mainpart 3 = trained model
 # load image model
-from Models.ImageModels import NewImageModel, ALLOWEDEXTENSIONS, ALLOWEDBACKENDEXTENSIONS
+from Models.ImageModels import CheckedImageModel, ALLOWEDEXTENSIONS, ALLOWEDBACKENDEXTENSIONS
 incomingFileDirectory = FileHandler_Class.ParseDirectoryPath("D:/Projects_D/S5_Groep6/PlantenHerkenning/Backend/Images/Incoming/");
 
 #testImages
@@ -27,14 +39,13 @@ for arrayFileInstance in givenImageArray:
 
     if not fileAccepted:
        print("Possible malicious filetype detected, breaking off run to protect the system.");
-       FileHandler_Class.RemoveFile(incomingFileDirectory+arrayFileInstance)
+       FileHandler_Class.RemoveFile(INCOMINGFOLDER+arrayFileInstance)
        raise Exception(f"Given file for the model is not allowed, removed the file prematurely. Filename that was given: {arrayFileInstance}");
+
 # Checking files complete, proceed to connect to the Database 
-from databaseConnector import DatabaseConnector;
-from DAO.checkDao import ChecksDao
-connection_Class = DatabaseConnector(); 
+from Handler.DatabaseHandler import DatabaseConnector as DB_C;
+connection_Class = DB_C(); 
 connection_Class.connect();
-checksDao_Class = ChecksDao(connection_Class)
 print("")
 print("Before processing the files");
 print("");
@@ -49,7 +60,7 @@ print("");
 
 #stap 3
 for arrayFileInstance in givenImageArray:
-    from Models.ImageModels import NewImageModel
+    from Models.ImageModels import CheckedImageModel
     newImageModel = FileHandler_Class.MoveIncommingToProcessed(arrayFileInstance);
     insertIntoImages = f"INSERT INTO UploadedImages (originalName, uuidName, extension, healthy, plant_disease, uploadDate)";
     insertIntoImages = f"{insertIntoImages}VALUES('{newImageModel.originalName}','{newImageModel.uuidName}',";
@@ -143,9 +154,9 @@ print("End Time : ", datetime.now())
 
 # newmodel testing
 from datetime import datetime
-from Models.ImageModels import NewImageModel
-newImageIncoming = NewImageModel("abc", "ghi","jkl", 1)
-newImageIncoming2 = NewImageModel("abc", "ghi","jkl", 1, datetime.now())
+from Models.ImageModels import CheckedImageModel
+newImageIncoming = CheckedImageModel("abc", "ghi","jkl", 1)
+newImageIncoming2 = CheckedImageModel("abc", "ghi","jkl", 1, datetime.now())
 
 #print(newImageIncoming.giventime)
 print(newImageIncoming2.giventime)
